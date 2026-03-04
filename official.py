@@ -104,6 +104,9 @@ def main():
     walk = [pygame.Rect(x, y, w, h) for (x, y, w, h) in rects]
     player.topleft = start
 
+    shoot_noise = pygame.mixer.Sound('/Users/revakhaire/Documents/CS405FinalProject/Shoot8.wav')
+    coin_noise = pygame.mixer.Sound('/Users/revakhaire/Documents/CS405FinalProject/Pickup5.wav')
+
     while True:
         screen.fill("#000000")
 
@@ -129,6 +132,7 @@ def main():
                 vx = -10 * cos(angle)
                 vy = -10 * sin(angle)
                 bullets.append(Bullet(screen, shot_x, shot_y, vx, vy))
+                shoot_noise.play()
 
         keys = pygame.key.get_pressed()
         delx = 0
@@ -191,6 +195,7 @@ def main():
             bit.display()
 
         if player.colliderect(goal):
+            coin_noise.play()
             i += 1
             bullets.clear()
             bits.clear()
