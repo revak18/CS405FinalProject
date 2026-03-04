@@ -47,6 +47,16 @@ def main():
         pygame.draw.rect(screen, "#ffff4d", (360, 102, 30, 20))
         pygame.draw.rect(screen, "#ffff4d", (367, 92, 15, 10))
 
+        font = pygame.font.SysFont("bodoni72", 40)
+
+        text1 = font.render("Congratulations!", True, "#8c3aff")
+        text2 = font.render("You beat the mazes!", True, "#8c3aff")
+
+        text1_rect = text1.get_rect(center=(WIDTH // 2, 280))
+        text2_rect = text2.get_rect(center=(WIDTH // 2, 460))
+        screen.blit(text1, text1_rect)
+        screen.blit(text2, text2_rect)
+        
         pygame.display.flip()
         fps_clock.tick(fps)
 
